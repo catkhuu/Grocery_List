@@ -4,11 +4,28 @@
     <title>GroceryList</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Grocery List</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if logged_in? %>
+            <li><%= link_to "Test Recipes", test_recipes_path %></li>
+            <li><%= link_to "Shopping Lists", user_shopping_lists_path(current_user)%></li>
+            <li><%= link_to "Ingredients", ingredients_path %></li>
+            <li><%= link_to "Log Out", session_path(current_user), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Log In", new_session_path%></li>
+            <li><%= link_to "Sign Up", new_user_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
