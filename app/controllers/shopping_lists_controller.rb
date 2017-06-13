@@ -2,7 +2,7 @@ class ShoppingListsController < ApplicationController
   before_action :find_and_ensure_shopping_list, except: [:index, :new, :create]
 
   def index
-    @shopping_lists = ShoppingList.all
+    @shopping_lists = current_user.shopping_lists
   end
 
   def new
