@@ -1,25 +1,28 @@
 class ShoppingListsController < ApplicationController
   before_action :find_and_ensure_shopping_list, except: [:index, :new, :create]
+  before_action :initialize_new_shopping_list, only: [:new, :create]
 
   def index
     @shopping_lists = current_user.shopping_lists
   end
 
   def new
-    @shopping_list = ShoppingList.new
   end
 
   def create
-    shopping_list = ShoppingList.new(shopping_list_params)
+    binding.pry
+    shopping_list = current_user.shopping_lists.new(shopping_list_params)
     if shopping_list.save
-      redirect_to shopping_list_path(shopping_list)  ## doublecheck after config routes
+      redirect_to user_shopping_list_path(current_user, shopping_list)
     else
-      @errors = shopping_list.errors
+      @errors = shopping_list.errors.full_messages
        render 'new'
     end
   end
 
   def show
+    binding.pry
+    @test_recipes = @shopping_list.test_recipes
   end
 
   def edit
@@ -51,5 +54,9 @@ class ShoppingListsController < ApplicationController
 
   def find_and_ensure_shopping_list
     render 'application/error404' unless @shopping_list = ShoppingList.find_by(id: params[:id])
+  end
+
+  def initialize_new_shopping_list
+    @shopping_list = ShoppingList.new
   end
 end
