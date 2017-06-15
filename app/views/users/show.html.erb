@@ -1,1 +1,11 @@
-<p>Welcome, <%= @user.username %></p>
+<div class='container'>
+  <h2>Welcome, <%= @user.username %></h2>
+  <div class='row'>
+    <h3>Upcoming Shopping Trips</h3>
+    <% if @shopping_lists.any? %>
+      <%= render partial: 'shopping_lists/index', locals: { shopping_lists: @shopping_lists }, layout: false %>
+    <% else %>
+      <% link_to 'Plan Next Trip', new_user_shopping_list_path(current_user) %>
+    <% end %>
+  </div>
+</div>

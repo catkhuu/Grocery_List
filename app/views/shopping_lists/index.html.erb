@@ -1,11 +1,7 @@
 <h1>My Shopping Lists</h1>
 
 <% if @shopping_lists.any? %>
-  <ul>
-    <% @shopping_lists.each do |list| %>
-      <li><a href='/users/<%= current_user.id %>/shopping_lists/<%= list.id %>' data='{shopping_list_id: <%= list.id %>}'><%= list.title %></a></li>
-      <li><%= list.shopping_date %></li>
-    <% end %>
+  <%= render partial: 'index', locals: { shopping_lists: @shopping_lists }, layout: false %>
 <% else %>
   <p>You haven't created any shopping lists. <%= link_to 'Start one here!', new_user_shopping_list_path(current_user) %></p>
 <% end %>
