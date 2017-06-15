@@ -21,7 +21,6 @@ class ShoppingListsController < ApplicationController
   end
 
   def show
-    binding.pry
     @test_recipes = @shopping_list.test_recipes
   end
 

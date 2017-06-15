@@ -1,15 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
@@ -23,4 +12,34 @@ $secondary-color: color("yellow", "base") !default;
  // center errors in forms
 .errors {
   margin-left: 30%;
+}
+
+// for responsive side-nav and offset main nav bar
+.wrapper {
+    padding-left: 300px;
+}
+// off-set headers further
+.wrapper .title-wrapper {
+  padding-left: 2%;
+}
+
+// center greeting img within side-nav
+.side-nav-greeting-img {
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+.homepage-img {
+  width: 235px;
+  height: 220px;
+}
+
+header, main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
 }

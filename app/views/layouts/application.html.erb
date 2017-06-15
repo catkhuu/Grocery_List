@@ -10,62 +10,44 @@
   </head>
 
   <body>
-    <!-- <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo">Grocery List</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <% if logged_in? %>
-            <li><%= link_to current_user.username, user_path(current_user) %></li>
-            <li><%= link_to "Test Recipes", test_recipes_path %></li>
-            <li><%= link_to "Shopping Lists", user_shopping_lists_path(current_user)%></li>
-            <li><%= link_to "Ingredients", ingredients_path %></li>
-            <li><%= link_to "Log Out", session_path(current_user), method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Log In", new_session_path%></li>
-            <li><%= link_to "Sign Up", new_user_path %></li>
-          <% end %>
-        </ul>
-      </div>
-    </nav> -->
-    <!-- bar. -->
 
+    <div class="wrapper">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo title-wrapper">Grocery List</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if logged_in? %>
+              <li><%= link_to current_user.username, user_path(current_user) %></li>
+              <li><%= link_to "Log Out", session_path(current_user), method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Log In", new_session_path%></li>
+              <li><%= link_to "Sign Up", new_user_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
 
-  <nav>
-    <div class="nav-wrapper #263238 blue-grey darken-4">
-      <div id="move-logo">
-        <a href="/" class="brand-logo our-logo">ListGrocer</a>
-      </div>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <% if logged_in?%>
-        <li><%= link_to current_user.username, user_path(current_user) %></li>
-        <li><%= link_to "Test Recipes", test_recipes_path %></li>
-        <li><%= link_to "Shopping Lists", user_shopping_lists_path(current_user)%></li>
-        <li><%= link_to "Ingredients", ingredients_path %></li>
-        <li><%= link_to "Log Out", session_path(current_user), method: :delete %></li>
-      </ul>
-      <% else %>
-        <ul class="right hide-on-med-and-down main-nav-bar-list">
-          <li><%= link_to "Log In", new_session_path%></li>
-          <li><%= link_to "Sign Up", new_user_path %></li>
-        </ul>
-      <% end %>
-
-      <ul class="side-nav main-nav-bar-list" id="mobile-demo">
+    </div>
+      <ul id="slide-out" class="side-nav fixed">
         <% if logged_in? %>
-          <li><%= link_to current_user.username, user_path(current_user) %></li>
+          <li>
+            <img src="https://cdn0.iconfinder.com/data/icons/shopping-41/70/groceries-512.png" class="circle responsive-img side-nav-greeting-img homepage-img">
+          <li>
+          <li><div class="divider"></div><li>
           <li><%= link_to "Test Recipes", test_recipes_path %></li>
           <li><%= link_to "Shopping Lists", user_shopping_lists_path(current_user)%></li>
           <li><%= link_to "Ingredients", ingredients_path %></li>
-          <li><%= link_to "Log Out", session_path(current_user), method: :delete %></li>
-          <li><div class="divider"></div></li>
         <% else %>
-          <li><%= link_to "Log In", new_session_path%></li>
-          <li><%= link_to "Sign Up", new_user_path %></li>
+          <li>
+            <img class="circle responsive-img side-nav-greeting-img" src="https://cdn1.iconfinder.com/data/icons/cooking-techniques/922/Beat-256.png">
+          </li>
         <% end %>
       </ul>
-    </div>
-  </nav>
 
-    <%= yield %>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
