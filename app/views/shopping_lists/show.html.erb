@@ -1,12 +1,16 @@
-<div id="shopping-list-display">
-  <h1><%= @shopping_list.title %></h1>
-  <% if @test_recipes.any? %>
-    <ul>
-      <% @test_recipes.each do |recipe| %>
-        <li><%= recipe.title %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p><%= link_to "Create Recipe", new_test_recipe_path(shopping_list_id: @shopping_list) %></p>
-  <% end %>
+<div class="container">
+  <div id="shopping-list-display">
+    <h2 class="title-wrapper"><%= @shopping_list.title %></h1>
+      <div class="row">
+        <% if @test_recipes.any? %>
+          <ul>
+            <% @test_recipes.each do |recipe| %>
+              <li><%= link_to recipe.title, test_recipe_path(recipe) %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p><%= link_to "Create Recipe", new_test_recipe_path(shopping_list_id: @shopping_list) %></p>
+        <% end %>
+      </div>
+  </div>
 </div>
