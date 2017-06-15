@@ -1,0 +1,17 @@
+<div class="container">
+  <div id="test-recipe-display">
+    <h2 class="title-wrapper"><%= @test_recipe.title %></h1>
+      <div class="row">
+        <% if @measurements.any? %>
+          <ul>
+            <% @measurements.each do |amount_id, measurement| %>
+              <li><%= link_to measurement, ingredient_amount_path(amount_id) %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <p>
+          <%= link_to "Add Ingredient", new_ingredient_amount_path(test_recipe_id: @test_recipe.id) %>
+        </p>
+      </div>
+  </div>
+</div>
