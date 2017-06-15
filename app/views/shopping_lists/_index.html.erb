@@ -1,0 +1,6 @@
+<ul>
+  <% @shopping_lists.each do |list| %>
+    <li><a href='/users/<%= current_user.id %>/shopping_lists/<%= list.id %>' data='{shopping_list_id: <%= list.id %>}'><%= list.title %></a></li>
+    <li>Intended Date: <%= list.display_shopping_date %></li>
+  <% end %>
+</ul>
