@@ -5,4 +5,10 @@ class TestRecipe < ApplicationRecord
   has_many :ingredients, through: :ingredient_amounts
 
   validates :title, presence: true
+
+  def display_measurements
+    self.ingredient_amounts.reduce({}) do |h, measurement|
+      h.merge(measurement.id => "#{measurement.amount} #{measurement.units} #{measurement.ingredient.name}")
+    end
+  end
 end

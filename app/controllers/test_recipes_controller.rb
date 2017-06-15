@@ -22,7 +22,9 @@ class TestRecipesController < ApplicationController
   end
 
   def show
+    binding.pry
     # This recipe has been tried and tested in these lists...
+    @measurements = @test_recipe.display_measurements
     @debuted_lists = @test_recipe.shopping_lists.order(shopping_date: :asc)
   end
 
