@@ -1,14 +1,14 @@
 class IngredientAmountsController < ApplicationController
   def new
+    @units = ['Bunch', 'Tbsp', 'Tsp', 'Each', 'Grams']
     @test_recipe = TestRecipe.find_by(id: params[:test_recipe_id])
     @ingredients = Ingredient.all.order(name: :asc)
     @ingredient_amount = IngredientAmount.new
   end
 
   def create
-    @test_recipe = TestRecipe.find_by(id: params[:test_recipe_id])
-    ingredient_amount = test_recipe.ingredient_amounts.new(ingredient_amount_params)
-    if ingredient_amount.save
+    measurement = IngredientAmount.new(ingredient_amount_params)
+    if measurement.save
       redirect_to test_recipe_path(@test_recipe)
     else
       @errors = ingredient_amount.errors.full_messages
