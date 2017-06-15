@@ -1,0 +1,35 @@
+<div id="ingredient-amount-form" class="container">
+  <h1 class="center">Ingredient Amount</h1>
+  <div class="row">
+    <div class="col s12">
+      <%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s10 offset-s1">
+      <%= form_for :ingredient_amount, url: ingredient_amounts_path do |f| %>
+      <div class="row">
+        <div class="col s6 offset-s2">
+          Amount: <%= f.number_field :amount %>
+        </div>
+        <div class="col s6 offset-s2">
+          Recipe: <%= f.select(:test_recipe_id, options_for_select([[@test_recipe.title, @test_recipe.id]])) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 offset-s2">
+          <% ingredients_array = @ingredients.map { |ingredient| [ingredient.name, ingredient.id] } %>
+          Ingredient: <%= f.select(:ingredient_id, options_for_select(ingredients_array)) %>
+        </div>
+        <div class="col s6 offset-s2">
+          Unit: <%= f.select :units, @units.map { |unit| unit } %>
+        </div>
+      </div>
+    <div class="row create-new-shopping-list-btn">
+      <div class="center" id="create-new-shopping-list-btn">
+        <%= f.submit "Submit", :class => "waves-effect waves-light btn #e53935 red darken-1" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
