@@ -11,4 +11,5 @@ class TestRecipe < ApplicationRecord
       h.merge(measurement.id => "#{measurement.amount} #{measurement.units} #{measurement.ingredient.name}")
     end
   end
+
 end

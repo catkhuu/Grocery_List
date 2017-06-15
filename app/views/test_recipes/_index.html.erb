@@ -1,0 +1,17 @@
+<div class="cols 12">
+  <div class="row">
+    <li class="col s6 indv-recipe-title"><%= link_to recipe.title, test_recipe_path(recipe) %></li>
+    <li class="col s3">
+      <button href="/test_recipes/<%= recipe.id %>" class="btn-floating btn-medium red">
+        <input type="hidden" name="_method" value="put" />
+        <i class="small material-icons btn-action">edit_mode</i>
+      </button>
+    </li>
+    <li class="col s3">
+      <button href="/test_recipes/<%= recipe.id %>" class="btn-floating btn-medium red">
+        <input type="hidden" name="_method" value="delete" />
+        <i class="small material-icons">delete</i>
+      </button>
+    </li>
+  </div>
+</div>

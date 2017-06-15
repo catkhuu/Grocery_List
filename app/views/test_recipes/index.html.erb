@@ -1,0 +1,42 @@
+<div class="container">
+  <div id="test-recipe-list">
+    <h2 class="title-wrapper">Test Recipes</h1>
+      <!-- tabbing begins -->
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s4"><a class="active" href="#test2">All Recipes</a></li>
+            <li class="tab col s4"><a href="#test4">My Recipes</a></li>
+          </ul>
+        </div>
+        <div class="col s12">
+          <%= link_to "Add Recipe", new_test_recipe_path, class: "col s2 push-s10 waves-effect waves-light btn #e53935 red darken-1" %>
+        </div>
+        <!-- tab content begins -->
+        <div id="test2" class="col s12">
+          <div class="row">
+            <% if @test_recipes.any? %>
+              <ul>
+                <% @test_recipes.each do |recipe| %>
+                  <%= render partial: "index", layout: false, locals: { recipe: recipe } %>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+        <div id="test4" class="col s12">
+          <div class="row">
+            <% if @my_recipes.any? %>
+              <ul>
+                <% @my_recipes.each do |recipe| %>
+                  <%= render partial: "index", layout: false, locals: { recipe: recipe } %>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+        <!-- tab content ends -->
+      </div>
+    <!-- tabbing ends -->
+  </div>
+</div>

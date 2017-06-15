@@ -10,7 +10,6 @@ class ShoppingListsController < ApplicationController
   end
 
   def create
-    binding.pry
     shopping_list = current_user.shopping_lists.new(shopping_list_params)
     if shopping_list.save
       redirect_to user_shopping_list_path(current_user, shopping_list)
@@ -21,6 +20,7 @@ class ShoppingListsController < ApplicationController
   end
 
   def show
+    binding.pry
     @test_recipes = @shopping_list.test_recipes
   end
 

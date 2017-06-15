@@ -3,7 +3,9 @@ class TestRecipesController < ApplicationController
   before_action :find_and_ensure_test_recipe, except: [:index, :new, :create]
 
   def index
+    binding.pry
     @test_recipes = TestRecipe.all
+    @my_recipes = current_user.test_recipes
   end
 
   def new
@@ -41,6 +43,7 @@ class TestRecipesController < ApplicationController
   end
 
   def destroy
+    binding.pry
     if @test_recipe.destroy
       redirect_to test_recipes_path
     else

@@ -1,16 +1,38 @@
 <div class="container">
   <div id="shopping-list-display">
     <h2 class="title-wrapper"><%= @shopping_list.title %></h1>
+    <!-- tabbing begins -->
       <div class="row">
-        <% if @test_recipes.any? %>
-          <ul>
-            <% @test_recipes.each do |recipe| %>
-              <li><%= link_to recipe.title, test_recipe_path(recipe) %></li>
-            <% end %>
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s4"><a class="active" href="#test2">All Recipes</a></li>
+            <li class="tab col s4"><a href="#test4">Item Totals</a></li>
           </ul>
-        <% else %>
-          <p><%= link_to "Create Recipe", new_test_recipe_path(shopping_list_id: @shopping_list) %></p>
-        <% end %>
-      </div>
+        </div>
+        <div class="col s12">
+          <%= link_to "Add Recipe", new_test_recipe_path, class: "col s2 push-s10 waves-effect waves-light btn #e53935 red darken-1 new-recipe-btn" %>
+        </div>
+
+        <div class="col s12">
+          <%= link_to "Create Recipe", new_shopping_list_test_recipe_path(shopping_list_id: @shopping_list.id), class: "col s2 push-s10 waves-effect waves-light btn #e53935 red darken-1 new-recipe-btn" %>
+        </div>
+        <!-- tab content begins -->
+        <div id="test2" class="col s12">
+          <div class="row">
+            <% if @test_recipes.any? %>
+              <ul>
+                <% @test_recipes.each do |recipe| %>
+                  <%= render partial: "test_recipes/index", layout: false, locals: { recipe: recipe } %>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+        <div id="test4" class="col s12">
+          <div class="row">
+            <h3>master grocery list</h3>
+          </div>
+        </div>
+      <!-- tab content ends -->    
   </div>
 </div>
