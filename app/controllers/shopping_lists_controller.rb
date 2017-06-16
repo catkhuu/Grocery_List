@@ -3,7 +3,9 @@ class ShoppingListsController < ApplicationController
   before_action :initialize_new_shopping_list, only: [:new, :create]
 
   def index
+    # binding.pry
     @shopping_lists = current_user.shopping_lists
+    @past_lists = current_user.shopping_lists.where('shopping_date < ?', DateTime.now)
   end
 
   def new
@@ -20,7 +22,7 @@ class ShoppingListsController < ApplicationController
   end
 
   def show
-    binding.pry
+    # binding.pry
     @test_recipes = @shopping_list.test_recipes
     @ingredients = {}
     @test_recipes.each do |recipe|

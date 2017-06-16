@@ -1,1 +1,24 @@
 
+<div id="new-test-recipe-form" class="container">
+  <h3 class="center">Test Recipe</h3>
+  <div class="row">
+    <div class="col s12">
+      <%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s10 offset-s1">
+      <%= form_for :test_recipe, url: test_recipes_path do |f| %>
+      <div class="row">
+        <div class="col s6 offset-s2" id="test-recipe-title-input">
+          Title: <%= f.text_field :title %>
+        </div>
+      </div>
+    <div class="row create-new-test-recipe-btn">
+      <div class="center" id="create-new-test-recipe-btn">
+        <%= f.submit "Submit", :class => "waves-effect waves-light btn #e53935 red darken-1" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

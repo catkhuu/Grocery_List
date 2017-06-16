@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :find_and_ensure_ingredient
+  before_action :find_and_ensure_ingredient, except: [:index, :new, :create]
   def index
     @ingredients = Ingredient.all.order(name: :asc)
   end
@@ -19,11 +19,11 @@ class IngredientsController < ApplicationController
   end
 
   def show
-    @ingredient = Ingredient.find_by(id: params[id])
+    # @ingredient = Ingredient.find_by(id: params[id])
 
     # this ingredient appears in x number of recipes
     @test_recipes = @ingredient.test_recipes
-    @recipe_count = @test_recipes.count  
+    @recipe_count = @test_recipes.count
   end
 
   def edit

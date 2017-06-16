@@ -1,5 +1,5 @@
 class TestRecipesController < ApplicationController
-  before_action :set_shopping_list, :initialize_new_test_recipe, only: [:new, :create]
+  # before_action :set_shopping_list, :initialize_new_test_recipe, only: [:new, :create]
   before_action :find_and_ensure_test_recipe, except: [:index, :new, :create]
 
   def index
@@ -8,14 +8,15 @@ class TestRecipesController < ApplicationController
   end
 
   def new
+    @test_recipe = TestRecipe.new
   end
 
   def create
     test_recipe = TestRecipe.new(test_recipe_params)
     if test_recipe.save
-      if test_recipe.shopping_list_test_recipes.create!(shopping_list_id: params[:shopping_list_id])
-        redirect_to user_shopping_list_path(current_user, params[:shopping_list_id])
-      end
+      # if test_recipe.shopping_list_test_recipes.create!(shopping_list_id: params[:shopping_list_id])
+        redirect_to test_recipes_path
+      # end
     else
       @errors = test_recipe.errors.full_messages
       render 'new'
@@ -44,7 +45,7 @@ class TestRecipesController < ApplicationController
     if @test_recipe.destroy
       redirect_to test_recipes_path
     else
-      @errors = ['Sorry, unable to process your request.'] # should be flash message 
+      @errors = ['Sorry, unable to process your request.'] # should be flash message
       redirect_to test_recipes_path
     end
   end

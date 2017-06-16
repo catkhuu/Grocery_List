@@ -1,15 +1,13 @@
 <div class='container'>
-  <!-- <div class='row'> -->
-    <!-- <div class="col s12">
-      <h3>Welcome, <%= @user.username %></h3>
-    </div> -->
-      <div class='row'>
-        <h4><%= @user.username %>'s Upcoming Shopping Trips</h4>
-        <% if @shopping_lists.any? %>
-        <%= render partial: 'shopping_lists/index', locals: { shopping_lists: @shopping_lists }, layout: false %>
-        <% else %>
-        <% link_to 'Plan Next Trip', new_user_shopping_list_path(current_user) %>
-        <% end %>
-      </div>
-  <!-- </div> -->
+  <div class='row'>
+    <h4>Your Upcoming Shopping Trips</h4>
+    <div class="col s2 offset-s10">
+      <% link_to 'Plan Next Trip', new_user_shopping_list_path(current_user), :class => "waves-effect waves-light btn #e53935 red darken-1" %>
+    </div>
+    <% if @shopping_lists.any? %>
+    <%= render partial: 'shopping_lists/index', locals: { shopping_lists: @shopping_lists }, layout: false %>
+    <% else %>
+    <% link_to 'Plan Next Trip', new_user_shopping_list_path(current_user), :class => "waves-effect waves-light btn #e53935 red darken-1" %>
+    <% end %>
+  </div>
 </div>
