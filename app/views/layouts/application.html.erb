@@ -11,10 +11,10 @@
 
   <body>
 
-    <div class="wrapper">
+    <div class="">
       <nav>
         <div class="nav-wrapper">
-          <a href="/" class="brand-logo title-wrapper">Grocery List</a>
+          <a href="/" class="brand-logo title-wrapper">GroceryList</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if logged_in? %>
               <li><%= link_to current_user.username, user_path(current_user) %></li>
@@ -29,8 +29,9 @@
     </div>
 
     </div>
+    <% if logged_in? %>
       <ul id="slide-out" class="side-nav fixed">
-        <% if logged_in? %>
+
           <li>
             <img src="https://cdn0.iconfinder.com/data/icons/shopping-41/70/groceries-512.png" class="circle responsive-img side-nav-greeting-img homepage-img">
           <li>
@@ -38,16 +39,15 @@
           <li><%= link_to "Test Recipes", test_recipes_path %></li>
           <li><%= link_to "Shopping Lists", user_shopping_lists_path(current_user)%></li>
           <li><%= link_to "Ingredients", ingredients_path %></li>
-        <% else %>
-          <li>
-            <img class="circle responsive-img side-nav-greeting-img" src="https://cdn1.iconfinder.com/data/icons/cooking-techniques/922/Beat-256.png">
-          </li>
-        <% end %>
       </ul>
+    <% end %>
 
-    <div class="wrapper">
-      <%= yield %>
-    </div>
-
+    <main>
+    <%= yield %>
+    </main>
+    <footer class='center page-footer white-text'>
+      &copy;GroceryList &#8226; A Plated Intern Project By:
+      <a href='https://github.com/catkhuu' class='white-text' id='footer-github-link'>Catherine Khuu</a>
+    </footer>
   </body>
 </html>

@@ -9,6 +9,26 @@ $secondary-color: color("yellow", "base") !default;
 @import "materialize/extras/nouislider";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+// <div class="wrapper">
+
+body {
+  font-family: 'Raleway', sans-serif;
+  height: 100%;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+  }
+
+body {
+  background: image-url('beachwood_table.png');
+  background-size: cover;
+}
  // center errors in forms
 .errors {
   margin-left: 30%;
@@ -32,6 +52,10 @@ $secondary-color: color("yellow", "base") !default;
 .homepage-img {
   width: 235px;
   height: 220px;
+}
+
+footer a#footer-github-link {
+  margin-right: 30%;
 }
 
 header, main, footer {
