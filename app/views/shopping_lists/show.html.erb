@@ -31,8 +31,15 @@
         <div id="test4" class="col s12">
           <div class="row">
             <h3>master grocery list</h3>
+            <% if @ingredients.any? %>
+              <ul>
+                <% @ingredients.each do |ingredient, count| %>
+                  <li><%= count.first %> <%= count.last %> of <%= ingredient %></li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
         </div>
-      <!-- tab content ends -->    
+      <!-- tab content ends -->
   </div>
 </div>
