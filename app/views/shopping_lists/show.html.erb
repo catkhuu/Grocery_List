@@ -4,7 +4,7 @@
     <!-- tabbing begins -->
       <div class="row">
         <div class="col s12">
-          <ul class="tabs">
+          <ul class="tabs tabs-override">
             <li class="tab col s4"><a class="active" href="#test2">All Recipes</a></li>
             <li class="tab col s4"><a href="#test4">Item Totals</a></li>
           </ul>
@@ -30,7 +30,7 @@
         </div>
         <div id="test4" class="col s12">
           <div class="row">
-            <h3>master grocery list</h3>
+            <h5>Ingredient Totals</h5>
             <% if @ingredients.any? %>
               <ul>
                 <% @ingredients.each do |ingredient, count| %>
