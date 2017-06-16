@@ -1,7 +1,7 @@
 # Create users (Chefs Andrea, Elana, and Michelle from the Culinary team)
-michelle = User.create!(username: 'michelle', email: 'michelle@plated.com', position: 'chef', password: '12345678', password_confirmation: '12345678')
-andrea = User.create!(username: 'andrea', email: 'andrea@plated.com', position: 'chef', password: '12345678', password_confirmation: '12345678')
-elana = User.create!(username: 'elana', email: 'elana@plated.com', position: 'chef', password: '12345678', password_confirmation: '12345678')
+michelle = User.create!(username: 'michelle.kresch', email: 'michelle@plated.com', position: 'Chef', password: '12345678', password_confirmation: '12345678')
+andrea = User.create!(username: 'andrea.folkerts', email: 'andrea@plated.com', position: 'Chef', password: '12345678', password_confirmation: '12345678')
+elana = User.create!(username: 'elana.karp', email: 'elana@plated.com', position: 'Chef', password: '12345678', password_confirmation: '12345678')
 
 
 # Create themed Shopping Lists

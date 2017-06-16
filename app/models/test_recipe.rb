@@ -12,4 +12,10 @@ class TestRecipe < ApplicationRecord
     end
   end
 
+  def sort_ingredients_and_measurements
+    self.ingredient_amounts.reduce({}) do |h, measurement|
+      h.merge(measurement.ingredient.name => { measurement.units => measurement.amount }) 
+    end
+  end
+
 end
