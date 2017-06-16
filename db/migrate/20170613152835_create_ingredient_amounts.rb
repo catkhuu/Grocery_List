@@ -7,5 +7,7 @@ class CreateIngredientAmounts < ActiveRecord::Migration[5.1]
       t.references :ingredient, index: true, foreign_key: true
       t.timestamps null: false
     end
+
+    add_index :ingredient_amounts, [:test_recipe_id, :ingredient_id], unique: true 
   end
 end
