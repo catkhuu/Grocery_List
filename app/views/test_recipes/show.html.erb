@@ -1,17 +1,39 @@
 <div class="container">
   <div id="test-recipe-display">
     <h2 class="title-wrapper"><%= @test_recipe.title %></h1>
-      <div class="row">
-        <% if @measurements.any? %>
-          <ul>
-            <% @measurements.each do |amount_id, measurement| %>
-              <li><%= link_to measurement, ingredient_amount_path(amount_id) %></li>
-            <% end %>
-          </ul>
-        <% end %>
-        <p>
-          <%= link_to "Add Ingredient", new_ingredient_amount_path(test_recipe_id: @test_recipe.id) %>
-        </p>
-      </div>
+      <div class="cols 12">
+        <div class="row">
+          <table>
+             <thead>
+               <tr>
+               </tr>
+             </thead>
+             <% if @measurements.any? %>
+             <tbody>
+               <% @measurements.each do | amount_id, measurement | %>
+               <tr>
+                 <td><%= link_to measurement, ingredient_amount_path(amount_id), class: "black-text" %></td>
+                 <td>
+                   <button href="/ingredient_amounts/<%= amount_id %>/edit" class="btn-floating btn-medium red">
+                      <input type="hidden" name="_method" value="put" />
+                      <i class="small material-icons btn-action">edit_mode</i>
+                    </button>
+                  </td>
+                 <td>
+                    <button href="/ingredient_amounts/<%= amount_id %>" class="btn-floating btn-medium red">
+                      <input type="hidden" name="_method" value="delete" />
+                      <i class="small material-icons">delete</i>
+                    </button>
+                  </td>
+               </tr>
+               <% end %>
+             </tbody>
+           </table>
+          </div>
+        </div>
+      <% end %>
+      <p>
+        <%= link_to "Add Ingredient", new_ingredient_amount_path(test_recipe_id: @test_recipe.id), :class => "waves-effect waves-light btn #e53935 red darken-1" %>
+      </p>
+    </div>
   </div>
-</div>
