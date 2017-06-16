@@ -12,10 +12,16 @@ class TestRecipe < ApplicationRecord
     end
   end
 
-  def sort_ingredients_and_measurements
-    self.ingredient_amounts.reduce({}) do |h, measurement|
-      h.merge(measurement.ingredient.name => { measurement.units => measurement.amount }) 
-    end
+  def get_ingredient_names(store)
+    self.ingredients.map { |ingredient| store[ingredient.name] = [0] }
   end
 
+  def sort_ingredients(store)
+    self.ingredient_amounts.each do |process|
+      if store[process.ingredient.name]
+        store[process.ingredient.name][0] += process.amount
+        store[process.ingredient.name][1] = process.units unless store[process.ingredient.name].length > 1
+      end
+    end
+  end
 end

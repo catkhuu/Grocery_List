@@ -22,6 +22,14 @@ class ShoppingListsController < ApplicationController
   def show
     binding.pry
     @test_recipes = @shopping_list.test_recipes
+    @ingredients = {}
+    @test_recipes.each do |recipe|
+      recipe.get_ingredient_names(@ingredients)
+    end
+    @test_recipes.each do |recipe|
+      recipe.sort_ingredients(@ingredients)
+    end
+    @test_recipes
   end
 
   def edit
